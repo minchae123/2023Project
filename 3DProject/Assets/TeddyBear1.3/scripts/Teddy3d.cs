@@ -267,9 +267,6 @@ public class Teddy3d : MonoBehaviour
         active = true;
     }
     
-
-
-
     IEnumerator StandUp()
     {
         //yield return new WaitForSeconds(4f);
