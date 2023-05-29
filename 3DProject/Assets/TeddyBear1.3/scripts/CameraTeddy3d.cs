@@ -4,14 +4,11 @@ using UnityEngine;
 
 public class CameraTeddy3d : MonoBehaviour
 {
-
     public GameObject Teddy;
     GameObject Teddy2;
     Transform trans;
     Transform trans2;
     public static bool dead;
-
-
 
     void Start ()
     {
