@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: 1ec56f25fda0a6741a0af78e07bcba70, type: 2}
 --- !u!1 &22769866
 GameObject:
   m_ObjectHideFlags: 0
@@ -296,6 +296,10 @@ PrefabInstance:
     - target: {fileID: 4218112179269783122, guid: 064a85ebb52009f42976745280e874b9, type: 3}
       propertyPath: m_Name
       value: Bee
+      objectReference: {fileID: 0}
+    - target: {fileID: 8954606008578763537, guid: 064a85ebb52009f42976745280e874b9, type: 3}
+      propertyPath: m_BlendShapeWeights.Array.data[0]
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 064a85ebb52009f42976745280e874b9, type: 3}
@@ -500,6 +504,33 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &970454040 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4218112179269783122, guid: 064a85ebb52009f42976745280e874b9, type: 3}
+  m_PrefabInstance: {fileID: 29624133}
+  m_PrefabAsset: {fileID: 0}
+--- !u!195 &970454044
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 970454040}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5732956
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2.49
+  m_BaseOffset: 0.6942539
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &1251224331
 GameObject:
   m_ObjectHideFlags: 3
@@ -842,6 +873,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4962911795697368095, guid: 5a30a57f924cb874a95c1b3612878a2f, type: 3}
       propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4962911795697368095, guid: 5a30a57f924cb874a95c1b3612878a2f, type: 3}
+      propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []

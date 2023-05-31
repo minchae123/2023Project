@@ -1,18 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class BeeMove : MonoBehaviour
 {
     private SkinnedMeshRenderer meshRenderer;
+
+    private Transform playerTrm;
+
+    private NavMeshAgent nav;
 
     public float flySpeed = 5f;
 
     private void Awake()
     {
         meshRenderer = GetComponent<SkinnedMeshRenderer>();
+        nav = GetComponent<NavMeshAgent>();
+        playerTrm = GameObject.Find("Player").GetComponent<Transform>();
 
         StartCoroutine(Flying());
+    }
+
+    private void Update()
+    {
+        Move();
     }
 
     private IEnumerator Flying()
@@ -24,5 +36,10 @@ public class BeeMove : MonoBehaviour
             meshRenderer.SetBlendShapeWeight(0, fly);
             yield return null;
         }
+    }
+
+    public void Move()
+    {
+        nav.SetDestination(playerTrm.position);
     }
 }
