@@ -33,8 +33,16 @@ public class BearMovement : MonoBehaviour
         transform.Rotate(dir.normalized * rotateSpeed);
     }
 
-    public void Move(float dir)
+    public void Move(float v)
     {
-        controller.Move(dir * transform.forward * speed);
+        if(v >= 0.1f)
+        {
+            controller.Move(v * transform.forward * speed);
+            bearController.Animator.Walk();
+        }
+        else
+        {
+            bearController.Animator.Idle();
+        }
     }
 }

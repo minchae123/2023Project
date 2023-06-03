@@ -17,10 +17,12 @@ public class BearAnimator : MonoBehaviour
     public void Walk()
     {
         animator.SetFloat(speedFloat, 1);
+        Debug.Log(speedFloat);
     }
 
     public void Idle()
     {
         animator.SetFloat(speedFloat, -1);
+        Debug.Log(speedFloat);
     }
 }
