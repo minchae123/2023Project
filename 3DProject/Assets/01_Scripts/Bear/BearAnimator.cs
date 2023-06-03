@@ -7,23 +7,20 @@ public class BearAnimator : MonoBehaviour
     private Animator animator;
     public Animator Animator => animator;
 
-    private int idleTrigger = Animator.StringToHash("idle");
-    private int walkTrigger = Animator.StringToHash("is_walk");
-    private int walkBool = Animator.StringToHash("walk");
+    private int speedFloat = Animator.StringToHash("speed");
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
     }
 
-    public void Walk(bool value)
+    public void Walk()
     {
-        animator.SetTrigger(walkTrigger);
-        animator.SetBool(walkBool, value);
+        animator.SetFloat(speedFloat, 1);
     }
 
     public void Idle()
     {
-        animator.SetTrigger(idleTrigger);
+        animator.SetFloat(speedFloat, -1);
     }
 }

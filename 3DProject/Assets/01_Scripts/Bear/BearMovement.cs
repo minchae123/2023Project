@@ -25,7 +25,6 @@ public class BearMovement : MonoBehaviour
         float v = Input.GetAxisRaw("Vertical");
 
         Rotate(new Vector3(0, h, 0));
-
         Move(v);
     }
 
@@ -36,7 +35,6 @@ public class BearMovement : MonoBehaviour
 
     public void Move(float dir)
     {
-        bearController.Animator.Walk(true);
         controller.Move(dir * transform.forward * speed);
     }
 }
