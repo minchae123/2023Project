@@ -24,8 +24,15 @@ public class BearMovement : MonoBehaviour
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
 
+        Vector3 dir = new Vector3(h, 0, v);
+
         Rotate(new Vector3(0, h, 0));
         Move(v);
+        if (dir.magnitude > 0)
+            bearController.Animator.SetWalk();
+        else
+            bearController.Animator.SetIdle();
+
     }
 
     public void Rotate(Vector3 dir)
@@ -35,14 +42,6 @@ public class BearMovement : MonoBehaviour
 
     public void Move(float v)
     {
-        if(v >= 0.1f)
-        {
-            controller.Move(v * transform.forward * speed);
-            bearController.Animator.Walk();
-        }
-        else
-        {
-            bearController.Animator.Idle();
-        }
+        controller.Move(v * transform.forward * speed);
     }
 }
