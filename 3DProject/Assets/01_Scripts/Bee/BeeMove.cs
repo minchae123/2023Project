@@ -15,7 +15,7 @@ public class BeeMove : MonoBehaviour
 
     private void Awake()
     {
-        meshRenderer = GetComponent<SkinnedMeshRenderer>();
+        meshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
         nav = GetComponent<NavMeshAgent>();
         playerTrm = GameObject.Find("Player").GetComponent<Transform>();
 

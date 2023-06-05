@@ -14,4 +14,9 @@ public class HoenyComb : MonoBehaviour
             OnGetHoney?.Invoke();
         }
     }
+
+    public void Destroy()
+    {
+        Destroy(gameObject);
+    }
 }

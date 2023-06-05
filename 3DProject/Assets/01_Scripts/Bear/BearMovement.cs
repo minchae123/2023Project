@@ -7,7 +7,6 @@ public class BearMovement : MonoBehaviour
     private BearController bearController;
 
     public float speed;
-    public float jumpSpeed;
     public float rotateSpeed;
     public float gravity = 9.8f;
 
@@ -24,10 +23,10 @@ public class BearMovement : MonoBehaviour
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
 
-        Vector3 dir = new Vector3(h, 0, v);
+        Vector3 dir = new Vector3(h, 0, v).normalized;
 
         Rotate(new Vector3(0, h, 0));
-        Move(v);
+        Move(ApplyGravity(dir));
         if (dir.magnitude > 0)
             bearController.Animator.SetWalk();
         else
@@ -40,8 +39,22 @@ public class BearMovement : MonoBehaviour
         transform.Rotate(dir.normalized * rotateSpeed);
     }
 
-    public void Move(float v)
+    public void Move(Vector3 v)
     {
-        controller.Move(v * transform.forward * speed);
+        controller.Move(v.y * Vector3.up + (v.z * transform.forward * speed));
+    }
+
+    public Vector3 ApplyGravity(Vector3 v)
+    {
+        if (!controller.isGrounded)
+        {
+            v.y -= gravity * Time.deltaTime;
+        }
+        else
+        {
+            v.y = 0f;
+        }
+
+        return v;
     }
 }
