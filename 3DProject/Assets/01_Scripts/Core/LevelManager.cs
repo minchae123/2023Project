@@ -19,7 +19,7 @@ public class LevelManager : MonoBehaviour
 
     public void MapLoad(int level)
     {
-        if(level > 0 && level < levelSO.map.Count)
-            Instantiate(levelSO.map[level-1], new Vector3(0, -1.26f, 0), Quaternion.identity);
+        Instantiate(levelSO.map[level-1], new Vector3(0, -1.26f, 0), Quaternion.identity);
+        Debug.Log(level);
     }
 }

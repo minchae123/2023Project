@@ -16,7 +16,7 @@ public class SceneLoad : MonoBehaviour
         rectImage = GetComponent<Image>();
         screenSize = new Vector2(Screen.width, Screen.height);
         rectTrm.sizeDelta = screenSize;
-        rectTrm.anchoredPosition = new Vector2(0, 0);
+        //rectTrm.anchoredPosition = new Vector2(0, 0);
     }
 
     public void LoadingOff()

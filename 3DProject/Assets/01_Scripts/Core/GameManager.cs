@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
+    public GameObject player;
 
     private int curLevel = 1;
 
@@ -17,15 +18,34 @@ public class GameManager : MonoBehaviour
         Instance = this;
     }
 
+    private void Start()
+    {
+        LoadStage(curLevel);
+    }
+
     private void Update()
     {
-
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            LoadStage(curLevel);
+            curLevel++;
+            curLevel = Mathf.Clamp(curLevel, 1, 5);
+        }
     }
 
 
-    public void LoadStage()
+    public void LoadStage(int level)
     {
-        LevelManager.Instance.MapLoad(curLevel);
+        MapInfo m = FindObjectOfType<MapInfo>();
 
+        if (m != null)
+        {
+            Destroy(m.gameObject);
+        }
+
+        player.transform.position = new Vector3(0, 10, 0);
+        LevelManager.Instance.MapLoad(level);
+        UIManager.Instance.SetLevelText(level);
+        curLevel++;
     }
 }

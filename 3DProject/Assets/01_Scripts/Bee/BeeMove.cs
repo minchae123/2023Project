@@ -6,9 +6,7 @@ using UnityEngine.AI;
 public class BeeMove : MonoBehaviour
 {
     private SkinnedMeshRenderer meshRenderer;
-
     private Transform playerTrm;
-
     private NavMeshAgent nav;
 
     public float flySpeed = 5f;
