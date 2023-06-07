@@ -12,3 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbecc217d0ba3e348811cdc08e992b1d, type: 3}
   m_Name: MapList
   m_EditorClassIdentifier: 
+  map:
+  - {fileID: 9172584525982602861, guid: 47c01a9f953256f468a40c68ce344a48, type: 3}
+  - {fileID: 36420410158178206, guid: 5a30a57f924cb874a95c1b3612878a2f, type: 3}
+  - {fileID: 7549129212376130004, guid: 2c7a53d7c00682848955f1684b7722ab, type: 3}
+  - {fileID: 2047772375526900416, guid: 7efd99973cfee9541b8f25ca44d36364, type: 3}
+  - {fileID: 5206058622894565289, guid: c5126f9be48cd06489624dfb0ea1650c, type: 3}

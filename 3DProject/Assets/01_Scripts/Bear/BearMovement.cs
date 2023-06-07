@@ -27,11 +27,11 @@ public class BearMovement : MonoBehaviour
 
         Rotate(new Vector3(0, h, 0));
         Move(ApplyGravity(dir));
+
         if (dir.magnitude > 0)
             bearController.Animator.SetWalk();
         else
             bearController.Animator.SetIdle();
-
     }
 
     public void Rotate(Vector3 dir)
@@ -54,7 +54,6 @@ public class BearMovement : MonoBehaviour
         {
             v.y = 0f;
         }
-
         return v;
     }
 }

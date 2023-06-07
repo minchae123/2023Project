@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+    private int curLevel = 1;
+
     private void Awake()
     {
         if(Instance != null)
@@ -13,5 +15,17 @@ public class GameManager : MonoBehaviour
             Debug.LogError("GameManager ¿À·ù");
         }
         Instance = this;
+    }
+
+    private void Update()
+    {
+
+    }
+
+
+    public void LoadStage()
+    {
+        LevelManager.Instance.MapLoad(curLevel);
+
     }
 }
