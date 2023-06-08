@@ -12,14 +12,16 @@ public class LevelManager : MonoBehaviour
     {
         if(Instance != null)
         {
-            Debug.LogError("LevelManager ¿À·ù");
+            Debug.LogError("LevelManager ï¿½ï¿½ï¿½ï¿½");
         }
         Instance = this;
     }
 
     public void MapLoad(int level)
     {
-        Instantiate(levelSO.map[level-1], new Vector3(0, -1.26f, 0), Quaternion.identity);
-        Debug.Log(level);
+        if(level > 0 && level < 6){
+            Instantiate(levelSO.map[level-1], new Vector3(0, -1.26f, 0), Quaternion.identity);
+            Debug.Log(level);
+        }
     }
 }

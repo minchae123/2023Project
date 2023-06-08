@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     {
         if(Instance != null)
         {
-            Debug.LogError("GameManager ¿À·ù");
+            Debug.LogError("GameManager ï¿½ï¿½ï¿½ï¿½");
         }
         Instance = this;
     }
@@ -28,24 +28,25 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q))
         {
             LoadStage(curLevel);
-            curLevel++;
-            curLevel = Mathf.Clamp(curLevel, 1, 5);
+            print(curLevel);
         }
     }
 
 
     public void LoadStage(int level)
     {
-        MapInfo m = FindObjectOfType<MapInfo>();
+        if(level > 0 && level < 6){
+            MapInfo m = FindObjectOfType<MapInfo>();
 
-        if (m != null)
-        {
-            Destroy(m.gameObject);
+            if (m != null)
+            {
+                Destroy(m.gameObject);
+            }
+
+            player.transform.position = new Vector3(0, 10, 0);
+            LevelManager.Instance.MapLoad(level);
+            UIManager.Instance.SetLevelText(level);
+            curLevel++;
         }
-
-        player.transform.position = new Vector3(0, 10, 0);
-        LevelManager.Instance.MapLoad(level);
-        UIManager.Instance.SetLevelText(level);
-        curLevel++;
     }
 }
