@@ -9,8 +9,9 @@ public class BearMovement : MonoBehaviour
     public float speed;
     public float rotateSpeed;
     public float gravity = 9.8f;
-
+    
     [SerializeField] private CharacterController controller;
+    [SerializeField] private Transform camTrm;
 
     private void Awake()
     {
@@ -37,6 +38,7 @@ public class BearMovement : MonoBehaviour
     public void Rotate(Vector3 dir)
     {
         transform.Rotate(dir.normalized * rotateSpeed);
+        camTrm.Rotate(dir.normalized * rotateSpeed);
     }
 
     public void Move(Vector3 v)

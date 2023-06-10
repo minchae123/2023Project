@@ -1838,6 +1838,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2143877551449420373, guid: 6e8e24b95285c8445b2c6476ed9b87e6, type: 3}
+      propertyPath: camTrm
+      value: 
+      objectReference: {fileID: 865570089}
     - target: {fileID: 2143877551449420378, guid: 6e8e24b95285c8445b2c6476ed9b87e6, type: 3}
       propertyPath: m_RootOrder
       value: 3
