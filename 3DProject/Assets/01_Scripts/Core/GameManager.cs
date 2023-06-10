@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public GameObject player;
+    public GameObject Bee;
 
     private int curLevel = 1;
 
@@ -32,7 +33,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
     public void LoadStage(int level)
     {
         if(level > 0 && level < 6){
@@ -48,5 +48,10 @@ public class GameManager : MonoBehaviour
             UIManager.Instance.SetLevelText(level);
             curLevel++;
         }
+    }
+
+    public void SpawnBee(Vector3 dir)
+    {
+        Instantiate(Bee, dir, Quaternion.identity);
     }
 }

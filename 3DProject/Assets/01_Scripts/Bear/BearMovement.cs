@@ -9,14 +9,19 @@ public class BearMovement : MonoBehaviour
     public float speed;
     public float rotateSpeed;
     public float gravity = 9.8f;
+    public float jumpScale = 5;
     
     [SerializeField] private CharacterController controller;
     [SerializeField] private Transform camTrm;
+
+    private Vector3 dir;
 
     private void Awake()
     {
         controller = GetComponent<CharacterController>();
         bearController = GetComponent<BearController>();
+
+        dir = new Vector3(0,10,0);
     }
 
     private void Update()
@@ -24,7 +29,7 @@ public class BearMovement : MonoBehaviour
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
 
-        Vector3 dir = new Vector3(h, 0, v).normalized;
+        dir = new Vector3(h, 0, v).normalized;
 
         Rotate(new Vector3(0, h, 0));
         Move(ApplyGravity(dir));
@@ -33,6 +38,11 @@ public class BearMovement : MonoBehaviour
             bearController.Animator.SetWalk();
         else
             bearController.Animator.SetIdle();
+
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            Jump();
+        }
     }
 
     public void Rotate(Vector3 dir)
@@ -44,6 +54,11 @@ public class BearMovement : MonoBehaviour
     public void Move(Vector3 v)
     {
         controller.Move(v.y * Vector3.up + (v.z * transform.forward * speed));
+    }
+
+    public void Jump()
+    {
+        controller.transform.position = transform.position * jumpScale;
     }
 
     public Vector3 ApplyGravity(Vector3 v)

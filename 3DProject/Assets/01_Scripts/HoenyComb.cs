@@ -9,8 +9,10 @@ public class HoenyComb : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        print('q');
+        if (other.gameObject.tag == "Player")
         {
+            print('p');
             OnGetHoney?.Invoke();
         }
     }
@@ -18,5 +20,10 @@ public class HoenyComb : MonoBehaviour
     public void Destroy()
     {
         Destroy(gameObject);
+    }
+
+    public void SetEnemy()
+    {
+        GameManager.Instance.SpawnBee(transform.position);
     }
 }

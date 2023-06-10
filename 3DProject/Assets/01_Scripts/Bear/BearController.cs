@@ -11,4 +11,5 @@ public class BearController : MonoBehaviour
     {
         animator = transform.Find("Model").GetComponent<BearAnimator>();
     }
+
 }
