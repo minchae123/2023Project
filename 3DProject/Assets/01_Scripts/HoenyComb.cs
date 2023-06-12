@@ -9,17 +9,15 @@ public class HoenyComb : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        print('q');
         if (other.gameObject.tag == "Player")
         {
-            print('p');
             OnGetHoney?.Invoke();
         }
     }
 
     public void Destroy()
     {
-        Destroy(gameObject);
+        Destroy(gameObject, 3f);
     }
 
     public void SetEnemy()
