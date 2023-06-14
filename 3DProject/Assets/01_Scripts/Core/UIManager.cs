@@ -9,14 +9,15 @@ public class UIManager : MonoBehaviour
 
     public SceneLoad sceneLoad;
 
-    [SerializeField] TextMeshProUGUI curLevelTxt;
+    [SerializeField] private TextMeshProUGUI curLevelTxt;
+    [SerializeField] private TextMeshProUGUI honeyCntTxt;
 
 
     private void Awake()
     {
         if(Instance != null)
         {
-            Debug.LogError("UIManger ø¿∑˘");
+            Debug.LogError("UIManger Ïò§Î•ò");
         }
         Instance = this;
 
@@ -30,6 +31,11 @@ public class UIManager : MonoBehaviour
 
     public void SetLevelText(int level)
     {
-        curLevelTxt.text = $"«ˆ¿Á ∑π∫ß : {level}";
+        curLevelTxt.text = $"ÌòÑÏû¨ Î†àÎ≤® : {level}";
+    }
+
+    public void RemainHoney(int count)
+    {
+        honeyCntTxt.text = $"ÎÇ®ÏùÄ ÍøÄ : {count}";
     }
 }

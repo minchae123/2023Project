@@ -9,6 +9,14 @@ public class HoenyComb : MonoBehaviour
     public UnityEvent OnGetHoney;
     public float moveSpeed;
     public float power;
+    public float upScale;
+
+    private BoxCollider col;
+
+    private void Awake() 
+    {
+        col = GetComponent<BoxCollider>();
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -25,12 +33,14 @@ public class HoenyComb : MonoBehaviour
 
     public void Fluffy()
     {
-        transform.position = new Vector3(transform.position.x, Mathf.Sin(Time.time * moveSpeed) * power + power, transform.position.z);
+        transform.position = new Vector3(transform.position.x, Mathf.Sin(Time.time * moveSpeed) * power + power, transform.position.z) + new Vector3(0, upScale, 0);
     }
 
     public void Destroy()
     {
-        Destroy(gameObject, 3f);
+        UIManager.Instance.RemainHoney(--GameManager.Instance.RemainHoney);
+        col.enabled = false;
+        Destroy(gameObject);
     }
 
     public void SetEnemy()

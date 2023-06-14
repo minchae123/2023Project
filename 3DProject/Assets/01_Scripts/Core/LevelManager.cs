@@ -12,7 +12,7 @@ public class LevelManager : MonoBehaviour
     {
         if(Instance != null)
         {
-            Debug.LogError("LevelManager ����");
+            Debug.LogError("LevelManager 오류");
         }
         Instance = this;
     }

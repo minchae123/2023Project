@@ -11,6 +11,7 @@ public class BeeMove : MonoBehaviour
 
     public float flySpeed = 5f;
 
+
     private void Awake()
     {
         meshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
