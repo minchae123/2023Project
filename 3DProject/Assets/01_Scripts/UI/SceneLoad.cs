@@ -14,7 +14,7 @@ public class SceneLoad : MonoBehaviour
     {
         rectTrm = GetComponent<RectTransform>();
         rectImage = GetComponent<Image>();
-        screenSize = new Vector2(Screen.width, Screen.height);
+        screenSize = new Vector2(Screen.width / 2.5f, Screen.height / 2.5f);
         rectTrm.sizeDelta = screenSize;
         //rectTrm.anchoredPosition = new Vector2(0, 0);
     }

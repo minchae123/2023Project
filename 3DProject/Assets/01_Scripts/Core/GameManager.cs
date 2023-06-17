@@ -44,12 +44,23 @@ public class GameManager : MonoBehaviour
         {
             SucessLevel(); 
         }
+
+        if(heart <= 0)
+        {
+
+        }
     }
 
     public void SucessLevel()
     {
+        DestroyBee();
         clearCam.Priority = 15;
         player.GetComponentInChildren<BearAnimator>().SetClap();
+    }
+
+    public void FailLevel()
+    {
+
     }
 
     public void LoadStage(int level)
@@ -61,6 +72,7 @@ public class GameManager : MonoBehaviour
                 Destroy(m.gameObject);
             }
 
+            UIManager.Instance.sceneLoad.LoadingOff();
             player.transform.position = new Vector3(0, 10, 0);
             player.GetComponentInChildren<BearAnimator>().SetIdle();
             LevelManager.Instance.MapLoad(level);
@@ -72,7 +84,6 @@ public class GameManager : MonoBehaviour
                 UIManager.Instance.RemainHoney(remainHoney);
             }
             heart = 3;
-            DestroyBee();
             curLevel++;
         }
     }

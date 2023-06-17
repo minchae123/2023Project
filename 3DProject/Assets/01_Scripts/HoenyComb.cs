@@ -41,8 +41,7 @@ public class HoenyComb : MonoBehaviour
         GameManager.Instance.RemainHoney--;
         UIManager.Instance.RemainHoney(GameManager.Instance.RemainHoney);
         col.enabled = false;
-        StartCoroutine(Size(0.7f, 1));
-        //Destroy(gameObject);
+        Destroy(gameObject);
     }
 
     public void SetEnemy()

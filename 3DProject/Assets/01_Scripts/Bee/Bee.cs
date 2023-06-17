@@ -26,7 +26,6 @@ public class Bee : MonoBehaviour
         if(isCanAttack && IsRange())
         {
             print("공격");
-            transform.position = transform.forward * 1.5f;
             isCanAttack = false;
             StartCoroutine(Delay(5));
         }
@@ -37,6 +36,8 @@ public class Bee : MonoBehaviour
         if(other.CompareTag("Player"))
         {
             print("터치");
+            if(GameManager.Instance.Heart > 0) 
+                UIManager.Instance.heartController.ReduceHeart(--GameManager.Instance.Heart);
         }
     }
 

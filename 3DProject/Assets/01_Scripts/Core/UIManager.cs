@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
     public static UIManager Instance;
 
     public SceneLoad sceneLoad;
+    public HeartController heartController;
 
     [SerializeField] private TextMeshProUGUI curLevelTxt;
     [SerializeField] private TextMeshProUGUI honeyCntTxt;
@@ -22,6 +23,7 @@ public class UIManager : MonoBehaviour
         Instance = this;
 
         sceneLoad = GetComponentInChildren<SceneLoad>();
+        heartController = GetComponentInChildren<HeartController>();
     }
 
     private void Update()

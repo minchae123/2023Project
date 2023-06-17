@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7628936003400778727}
   - component: {fileID: 7628936003400778726}
   - component: {fileID: 1535106757}
+  - component: {fileID: 2309295136134003710}
   m_Layer: 9
   m_Name: Beee
   m_TagString: Untagged
@@ -58,7 +59,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5732956
-  m_Speed: 3.5
+  m_Speed: 4
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -82,6 +83,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d23eb00bde006446b42ab07d1234331, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isCanAttack: 1
+--- !u!135 &2309295136134003710
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7628936003400778728}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.31
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &7628936004854191099
 PrefabInstance:
   m_ObjectHideFlags: 0
