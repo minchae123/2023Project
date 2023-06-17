@@ -41,11 +41,35 @@ public class HoenyComb : MonoBehaviour
         GameManager.Instance.RemainHoney--;
         UIManager.Instance.RemainHoney(GameManager.Instance.RemainHoney);
         col.enabled = false;
-        Destroy(gameObject);
+        StartCoroutine(Size(0.7f, 1));
+        //Destroy(gameObject);
     }
 
     public void SetEnemy()
     {
         GameManager.Instance.SpawnBee();
+    }
+
+    public float EaseInOuQuad(float x) 
+    {
+        return x < 0.5 ? 2 * x * x : 1 - Mathf.Pow(-2 * x + 2, 2) / 2;
+    }
+
+    IEnumerator Size(float t, float yDelta)
+    {
+        float percent = 0, currentT = 0;
+        Vector3 firstSize = transform.localScale;
+
+        while (percent < 1)
+        {
+            currentT += Time.deltaTime;
+            percent = currentT / t;
+            float value = EaseInOuQuad(percent);
+
+            float v = yDelta * value;
+            transform.localScale = firstSize + new Vector3(v, v, v);
+
+            yield return null;
+        }
     }
 }

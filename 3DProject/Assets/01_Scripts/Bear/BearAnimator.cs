@@ -8,6 +8,7 @@ public class BearAnimator : MonoBehaviour
     public Animator Animator => animator;
 
     private readonly int speedFloat = Animator.StringToHash("speed");
+    private readonly int clapTrigger = Animator.StringToHash("clap");
 
     private void Awake()
     {
@@ -22,5 +23,10 @@ public class BearAnimator : MonoBehaviour
     public void SetIdle()
     {
         animator.SetFloat(speedFloat, 0);
+    }
+
+    public void SetClap()
+    {
+        animator.SetTrigger(clapTrigger);
     }
 }

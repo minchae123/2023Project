@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Cinemachine;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class GameManager : MonoBehaviour
 
     private int heart = 3;
     public int Heart { get => heart; set => heart = value;}
+
+    [SerializeField] private CinemachineVirtualCamera clearCam;
 
     private void Awake()
     {
@@ -39,8 +42,14 @@ public class GameManager : MonoBehaviour
 
         if(remainHoney <= 0)
         {
-            LoadStage(curLevel);
+            SucessLevel(); 
         }
+    }
+
+    public void SucessLevel()
+    {
+        clearCam.Priority = 15;
+        player.GetComponentInChildren<BearAnimator>().SetClap();
     }
 
     public void LoadStage(int level)
@@ -53,6 +62,7 @@ public class GameManager : MonoBehaviour
             }
 
             player.transform.position = new Vector3(0, 10, 0);
+            player.GetComponentInChildren<BearAnimator>().SetIdle();
             LevelManager.Instance.MapLoad(level);
             UIManager.Instance.SetLevelText(level);
             m = FindObjectOfType<MapInfo>();
