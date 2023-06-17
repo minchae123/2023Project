@@ -5,19 +5,15 @@ using UnityEngine;
 public class Bee : MonoBehaviour
 {
     [SerializeField] private bool isCanAttack = true;
+
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Z))
-        {
-            aa();
-        }
-
         Attack();
     }
 
     public bool IsRange()
     {
-        if(Vector3.Distance(transform.position, GameManager.Instance.player.transform.position) < 1)
+        if(Vector3.Distance(transform.position, GameManager.Instance.player.transform.position) < 1.5f)
         {
             return true;
         }
@@ -30,11 +26,8 @@ public class Bee : MonoBehaviour
         {
             print("공격");
             isCanAttack = false;
-            transform.position = transform.forward * 1;
+            transform.position = transform.forward * 1f;
         }
     }
 
-    public void aa() {
-        transform.position = transform.forward * 1;
-    }
 }

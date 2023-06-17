@@ -38,11 +38,6 @@ public class BearMovement : MonoBehaviour
             bearController.Animator.SetWalk();
         else
             bearController.Animator.SetIdle();
-
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            Jump();
-        }
     }
 
     public void Rotate(Vector3 dir)
@@ -54,11 +49,6 @@ public class BearMovement : MonoBehaviour
     public void Move(Vector3 v)
     {
         controller.Move(v.y * Vector3.up + (v.z * transform.forward * speed));
-    }
-
-    public void Jump()
-    {
-        controller.transform.position = transform.position * jumpScale;
     }
 
     public Vector3 ApplyGravity(Vector3 v)

@@ -38,13 +38,14 @@ public class HoenyComb : MonoBehaviour
 
     public void Destroy()
     {
-        UIManager.Instance.RemainHoney(--GameManager.Instance.RemainHoney);
+        GameManager.Instance.RemainHoney--;
+        UIManager.Instance.RemainHoney(GameManager.Instance.RemainHoney);
         col.enabled = false;
         Destroy(gameObject);
     }
 
     public void SetEnemy()
     {
-        GameManager.Instance.SpawnBee(transform.position);
+        GameManager.Instance.SpawnBee();
     }
 }

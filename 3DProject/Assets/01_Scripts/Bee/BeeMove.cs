@@ -16,7 +16,7 @@ public class BeeMove : MonoBehaviour
     {
         meshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
         nav = GetComponent<NavMeshAgent>();
-        playerTrm = GameObject.Find("Player").GetComponent<Transform>();
+        playerTrm = GameObject.Find("Player/BeeFollow").GetComponent<Transform>();
 
         StartCoroutine(Flying());
     }

@@ -12,6 +12,10 @@ public class GameManager : MonoBehaviour
     private int curLevel = 1;
     private int remainHoney = 0;
     public int RemainHoney{ get =>remainHoney; set => remainHoney = value;}
+
+    private int heart = 3;
+    public int Heart { get => heart; set => heart = value;}
+
     private void Awake()
     {
         if(Instance != null)
@@ -31,7 +35,11 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q))
         {
             LoadStage(curLevel);
-            print(curLevel);
+        }
+
+        if(remainHoney <= 0)
+        {
+
         }
     }
 
@@ -39,7 +47,6 @@ public class GameManager : MonoBehaviour
     {
         if(level > 0 && level < 6){
             MapInfo m = FindObjectOfType<MapInfo>();
-            print(m);
             if (m != null)
             {
                 Destroy(m.gameObject);
@@ -54,12 +61,19 @@ public class GameManager : MonoBehaviour
                 remainHoney = m.HoneyCnt;
                 UIManager.Instance.RemainHoney(remainHoney);
             }
+            heart = 3;
             curLevel++;
         }
     }
 
-    public void SpawnBee(Vector3 dir)
+    public void SpawnBee()
     {
-        Instantiate(Bee, dir, Quaternion.identity);
+        Instantiate(Bee, Vector3.zero, Quaternion.identity);
+    }
+
+    public IEnumerator ChangeDealy()
+    {
+        yield return new WaitForSeconds(3);
+        LoadStage(curLevel);
     }
 }

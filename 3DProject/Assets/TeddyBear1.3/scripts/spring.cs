@@ -11,7 +11,7 @@ public class spring : MonoBehaviour
         if (other.GetComponent<Collider>().tag == "Player") 
         {
             GetComponent<Animator>().Play("spring");           
-            other.gameObject.GetComponent<Rigidbody>().AddForce(0f, force, 0f, ForceMode.Impulse);
+            //other.gameObject.GetComponent<Rigidbody>().AddForce(0f, force, 0f, ForceMode.Impulse);
         }
     }
 }
