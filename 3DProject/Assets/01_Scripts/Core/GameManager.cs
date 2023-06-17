@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
 
         if(remainHoney <= 0)
         {
-
+            LoadStage(curLevel);
         }
     }
 
@@ -62,13 +62,24 @@ public class GameManager : MonoBehaviour
                 UIManager.Instance.RemainHoney(remainHoney);
             }
             heart = 3;
+            DestroyBee();
             curLevel++;
         }
     }
 
     public void SpawnBee()
     {
-        Instantiate(Bee, Vector3.zero, Quaternion.identity);
+        GameObject b = Instantiate(Bee, transform.position, Quaternion.identity);
+        b.transform.parent = gameObject.transform;
+    }
+
+    public void DestroyBee()
+    {
+        Bee[] bee = GetComponentsInChildren<Bee>();
+        for(int i = 0; i < bee.Length; i++)
+        {
+            Destroy(bee[i].gameObject);
+        }
     }
 
     public IEnumerator ChangeDealy()

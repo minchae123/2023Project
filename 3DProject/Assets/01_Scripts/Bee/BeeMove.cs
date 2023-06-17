@@ -16,14 +16,14 @@ public class BeeMove : MonoBehaviour
     {
         meshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
         nav = GetComponent<NavMeshAgent>();
-        playerTrm = GameObject.Find("Player/BeeFollow").GetComponent<Transform>();
+        playerTrm = GameObject.Find("Player").GetComponent<Transform>();
 
         StartCoroutine(Flying());
+        StartCoroutine(MoveDelay());
     }
 
     private void Update()
     {
-        Move();
     }
 
     private IEnumerator Flying()
@@ -40,5 +40,14 @@ public class BeeMove : MonoBehaviour
     public void Move()
     {
         nav.SetDestination(playerTrm.position);
+    }
+
+    IEnumerator MoveDelay()
+    {
+        while (true)
+        {
+            Move();
+            yield return new WaitForSeconds(0.5f);
+        }
     }
 }

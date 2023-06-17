@@ -9,6 +9,7 @@ public class Bee : MonoBehaviour
     void Update()
     {
         Attack();
+
     }
 
     public bool IsRange()
@@ -25,9 +26,23 @@ public class Bee : MonoBehaviour
         if(isCanAttack && IsRange())
         {
             print("공격");
+            transform.position = transform.forward * 1.5f;
             isCanAttack = false;
-            transform.position = transform.forward * 1f;
+            StartCoroutine(Delay(5));
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Player"))
+        {
+            print("터치");
+        }
+    }
+
+    IEnumerator Delay(float t)
+    {
+        yield return new WaitForSeconds(t);
+        isCanAttack = true;
+    }
 }

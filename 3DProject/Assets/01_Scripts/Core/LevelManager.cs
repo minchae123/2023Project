@@ -20,7 +20,7 @@ public class LevelManager : MonoBehaviour
     public void MapLoad(int level)
     {
         if(level > 0 && level < 6){
-            Instantiate(levelSO.map[level-1], transform.position, Quaternion.identity);
+            Instantiate(levelSO.map[level - 1], transform.position, Quaternion.identity);
             Debug.Log(level);
         }
     }
