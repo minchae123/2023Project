@@ -12,4 +12,9 @@ public class BearController : MonoBehaviour
         animator = transform.Find("Model").GetComponent<BearAnimator>();
     }
 
+    public void Die()
+    {
+        animator.SetDie();
+    }
+
 }

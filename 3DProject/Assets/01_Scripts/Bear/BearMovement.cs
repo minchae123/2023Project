@@ -73,4 +73,15 @@ public class BearMovement : MonoBehaviour
     {
         controller.Move(new Vector3(0, jumpScale, 0) * Time.deltaTime);
     }
+
+    public void ResetPlayer()
+    {
+        speed = 0.05f;
+        dir = new Vector3(0, 10, 0);
+    }
+
+    public void StopPlayer()
+    {
+        speed = 0;
+    }
 }

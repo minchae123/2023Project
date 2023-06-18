@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f91b309ed442a934084f75e06606156e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 2
+  level: 1
   honeyCnt: 5
 --- !u!1001 &1496746642766405831
 PrefabInstance:

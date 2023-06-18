@@ -9,6 +9,7 @@ public class BearAnimator : MonoBehaviour
 
     private readonly int speedFloat = Animator.StringToHash("speed");
     private readonly int clapTrigger = Animator.StringToHash("clap");
+    private readonly int dieTrigger = Animator.StringToHash("die");
 
     private void Awake()
     {
@@ -28,5 +29,10 @@ public class BearAnimator : MonoBehaviour
     public void SetClap()
     {
         animator.SetTrigger(clapTrigger);
+    }
+
+    public void SetDie()
+    {
+        animator.SetTrigger(dieTrigger);
     }
 }

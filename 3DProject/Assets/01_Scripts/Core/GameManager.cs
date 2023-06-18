@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public GameObject Bee;
 
     private int curLevel = 1;
+    public int CurLevel { get => curLevel; set => curLevel = value; }
     private int remainHoney = 0;
     public int RemainHoney{ get =>remainHoney; set => remainHoney = value;}
 
@@ -49,13 +50,19 @@ public class GameManager : MonoBehaviour
 
         if(heart <= 0)
         {
+            player.GetComponent<BearController>().Die();
             print("오버");
         }
 
-        timer += Time.deltaTime;
+        timer -= Time.deltaTime;
         UIManager.Instance.TimerSet((int)timer);
 
-        if(timer > 100)
+        if(timer < 0)
+        {
+            FailLevel();
+        }
+
+        if (Input.GetKeyDown(KeyCode.X))
         {
             FailLevel();
         }
@@ -70,7 +77,8 @@ public class GameManager : MonoBehaviour
 
     public void FailLevel()
     {
-
+        UIManager.Instance.rePanel.SetActive(true);
+        Time.timeScale = 0;
     }
 
     public void LoadStage(int level)
@@ -84,22 +92,32 @@ public class GameManager : MonoBehaviour
             }
 
             UIManager.Instance.sceneLoad.LoadingOff();
-            player.transform.position = new Vector3(0, 10, 0);
-            player.GetComponentInChildren<BearAnimator>().SetIdle();
+            
             LevelManager.Instance.MapLoad(level);
-            UIManager.Instance.SetLevelText(level);
 
             m = FindObjectOfType<MapInfo>();
-            if(m != null)
+            if (m != null)
             {
                 remainHoney = m.HoneyCnt;
                 UIManager.Instance.RemainHoney(remainHoney);
             }
-                
-            heart = 3;
-            curLevel++;
 
+            StartCoroutine(DelayLevel(level));
         }
+    }
+
+    IEnumerator DelayLevel(int level)
+    {
+        player.transform.position = new Vector3(0, 10, 0);
+        player.GetComponentInChildren<BearAnimator>().SetIdle();
+        UIManager.Instance.heartController.FullHeart();
+        UIManager.Instance.SetLevelText(level);
+
+        heart = 3;
+        timer = 102;
+        curLevel++;
+
+        yield return null;
     }
 
     public void SpawnBee()

@@ -17,6 +17,7 @@ public class UIManager : MonoBehaviour
 
     public GameObject menuPanel;
     private bool isMenuOpen = false;
+    public GameObject rePanel;
 
     private void Awake()
     {
@@ -88,5 +89,12 @@ public class UIManager : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void RestartGame()
+    {
+        GameManager.Instance.LoadStage(--GameManager.Instance.CurLevel);
+        Time.timeScale = 1;
+        rePanel.SetActive(false);
     }
 }
