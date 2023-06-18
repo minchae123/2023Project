@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
 
         if(heart <= 0)
         {
-
+            print("오버");
         }
     }
 
@@ -65,7 +65,8 @@ public class GameManager : MonoBehaviour
 
     public void LoadStage(int level)
     {
-        if(level > 0 && level < 6){
+        if(level > 0 && level < 6)
+        {
             MapInfo m = FindObjectOfType<MapInfo>();
             if (m != null)
             {
@@ -85,6 +86,7 @@ public class GameManager : MonoBehaviour
             }
             heart = 3;
             curLevel++;
+
         }
     }
 

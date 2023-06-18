@@ -13,6 +13,8 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI curLevelTxt;
     [SerializeField] private TextMeshProUGUI honeyCntTxt;
+    public GameObject menuPanel;
+    private bool isMenuOpen = false;
 
     private void Awake()
     {
@@ -26,9 +28,34 @@ public class UIManager : MonoBehaviour
         heartController = GetComponentInChildren<HeartController>();
     }
 
+
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (isMenuOpen)
+            {
+                CloseMenu();
+            }
+            else
+            {
+                OpenMenu();
+            }
+        }
+    }
 
+    public void OpenMenu()
+    {
+        menuPanel.SetActive(true);
+        Time.timeScale = 0f; 
+        isMenuOpen = true;
+    }
+
+    public void CloseMenu()
+    {
+        menuPanel.SetActive(false);
+        Time.timeScale = 1f; 
+        isMenuOpen = false;
     }
 
     public void SetLevelText(int level)
@@ -39,5 +66,20 @@ public class UIManager : MonoBehaviour
     public void RemainHoney(int count)
     {
         honeyCntTxt.text = $"남은 꿀 : {count}";
+    }
+
+    public void OffPanel(GameObject panel)
+    {
+        panel.gameObject.SetActive(false);
+    }
+
+    public void OnPanel(GameObject panel)
+    {
+        panel.gameObject.SetActive(true);
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }

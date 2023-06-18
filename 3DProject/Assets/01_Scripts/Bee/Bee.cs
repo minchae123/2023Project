@@ -35,9 +35,10 @@ public class Bee : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
-            print("터치");
-            if(GameManager.Instance.Heart > 0) 
+            if (GameManager.Instance.Heart > 0)
                 UIManager.Instance.heartController.ReduceHeart(--GameManager.Instance.Heart);
+            else
+                print("주금");
         }
     }
 

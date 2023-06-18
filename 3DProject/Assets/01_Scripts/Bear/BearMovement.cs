@@ -38,6 +38,11 @@ public class BearMovement : MonoBehaviour
             bearController.Animator.SetWalk();
         else
             bearController.Animator.SetIdle();
+
+        if (Input.GetButtonDown("Jump"))
+        {
+            Jump();
+        }
     }
 
     public void Rotate(Vector3 dir)
@@ -62,5 +67,10 @@ public class BearMovement : MonoBehaviour
             v.y = 0f;
         }
         return v;
+    }
+
+    public void Jump()
+    {
+        controller.Move(new Vector3(0, jumpScale, 0) * Time.deltaTime);
     }
 }
