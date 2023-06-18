@@ -13,6 +13,8 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI curLevelTxt;
     [SerializeField] private TextMeshProUGUI honeyCntTxt;
+    [SerializeField] private TextMeshProUGUI curTimeTxt;
+
     public GameObject menuPanel;
     private bool isMenuOpen = false;
 
@@ -66,6 +68,11 @@ public class UIManager : MonoBehaviour
     public void RemainHoney(int count)
     {
         honeyCntTxt.text = $"남은 꿀 : {count}";
+    }
+
+    public void TimerSet(int time)
+    {
+        curTimeTxt.text = $"남은 시간 : {time}";
     }
 
     public void OffPanel(GameObject panel)

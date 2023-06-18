@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     private int remainHoney = 0;
     public int RemainHoney{ get =>remainHoney; set => remainHoney = value;}
 
+    private float timer = 100;
+
     private int heart = 3;
     public int Heart { get => heart; set => heart = value;}
 
@@ -49,6 +51,14 @@ public class GameManager : MonoBehaviour
         {
             print("오버");
         }
+
+        timer += Time.deltaTime;
+        UIManager.Instance.TimerSet((int)timer);
+
+        if(timer > 100)
+        {
+            FailLevel();
+        }
     }
 
     public void SucessLevel()
@@ -78,12 +88,14 @@ public class GameManager : MonoBehaviour
             player.GetComponentInChildren<BearAnimator>().SetIdle();
             LevelManager.Instance.MapLoad(level);
             UIManager.Instance.SetLevelText(level);
+
             m = FindObjectOfType<MapInfo>();
             if(m != null)
             {
                 remainHoney = m.HoneyCnt;
                 UIManager.Instance.RemainHoney(remainHoney);
             }
+                
             heart = 3;
             curLevel++;
 
