@@ -7,11 +7,12 @@ public class BearMovement : MonoBehaviour
     private BearController bearController;
 
     public float speed;
+    private float realSpeed;
     public float rotateSpeed;
     public float gravity = 9.8f;
     public float jumpScale = 5;
     
-    [SerializeField] private CharacterController controller;
+    public CharacterController controller;
     [SerializeField] private Transform camTrm;
 
     private Vector3 dir;
@@ -20,6 +21,8 @@ public class BearMovement : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         bearController = GetComponent<BearController>();
+
+        realSpeed = speed;
 
         dir = new Vector3(0,10,0);
     }
@@ -76,12 +79,14 @@ public class BearMovement : MonoBehaviour
 
     public void ResetPlayer()
     {
-        speed = 0.05f;
+        gravity = 9.8f;
+        speed = realSpeed;
         dir = new Vector3(0, 10, 0);
     }
 
     public void StopPlayer()
     {
         speed = 0;
+        gravity = 0;
     }
 }

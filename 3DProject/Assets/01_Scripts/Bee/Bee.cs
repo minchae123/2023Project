@@ -5,11 +5,18 @@ using UnityEngine;
 public class Bee : MonoBehaviour
 {
     [SerializeField] private bool isCanAttack = true;
+    [SerializeField] private bool isCanHit = true;
+
+    private Material mat;
+
+    private void Awake()
+    {
+        mat = GetComponentInChildren<SkinnedMeshRenderer>().material;
+    }
 
     void Update()
     {
         Attack();
-
     }
 
     public bool IsRange()
@@ -27,18 +34,30 @@ public class Bee : MonoBehaviour
         {
             print("공격");
             isCanAttack = false;
+            Material(Color.red);
             StartCoroutine(Delay(5));
         }
+    }
+
+    public void Material(Color c)
+    {
+        mat.color = c;
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Player"))
         {
-            if (GameManager.Instance.Heart > 0)
+            if (GameManager.Instance.Heart > 0 && isCanHit)
+            {
+                isCanHit = false;
                 UIManager.Instance.heartController.ReduceHeart(--GameManager.Instance.Heart);
+                StartCoroutine(Delay2(2));
+            }
             else
-                print("주금");
+            {
+
+            }
         }
     }
 
@@ -46,5 +65,12 @@ public class Bee : MonoBehaviour
     {
         yield return new WaitForSeconds(t);
         isCanAttack = true;
+        Material(Color.white);
+    }
+
+    IEnumerator Delay2(float t)
+    {
+        yield return new WaitForSeconds(t);
+        isCanHit = true;    
     }
 }

@@ -45,17 +45,16 @@ public class GameManager : MonoBehaviour
 
         if(remainHoney <= 0)
         {
-            SucessLevel(); 
+            SuccessLevel(); 
         }
 
         if(heart <= 0)
         {
-            player.GetComponent<BearController>().Die();
+            FailLevel();
             print("오버");
         }
 
-        timer -= Time.deltaTime;
-        UIManager.Instance.TimerSet((int)timer);
+        Timer();
 
         if(timer < 0)
         {
@@ -68,31 +67,51 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void SucessLevel()
+    public void Timer()
+    {
+        timer -= Time.deltaTime;
+        UIManager.Instance.TimerSet((int)timer);
+    }
+
+    public void SuccessLevel()
     {
         DestroyBee();
         clearCam.Priority = 15;
+        timer += Time.deltaTime;
         player.GetComponentInChildren<BearAnimator>().SetClap();
+        player.GetComponent<BearMovement>().StopPlayer();
+
+        StartCoroutine(SucessDelay());
+    }
+
+    IEnumerator SucessDelay()
+    {
+        yield return new WaitForSeconds(3);
+        UIManager.Instance.OnPanel(UIManager.Instance.successPanel);
+        UIManager.Instance.sceneLoad.LoadingOn();
     }
 
     public void FailLevel()
     {
+        UIManager.Instance.sceneLoad.LoadingOn();
+
         UIManager.Instance.rePanel.SetActive(true);
-        Time.timeScale = 0;
+        player.GetComponent<BearController>().Die();
+        timer += Time.deltaTime;
     }
 
     public void LoadStage(int level)
     {
         if(level > 0 && level < 6)
         {
+            UIManager.Instance.sceneLoad.LoadingOff();
             MapInfo m = FindObjectOfType<MapInfo>();
             if (m != null)
             {
                 Destroy(m.gameObject);
             }
-
-            UIManager.Instance.sceneLoad.LoadingOff();
             
+            clearCam.Priority = 5;
             LevelManager.Instance.MapLoad(level);
 
             m = FindObjectOfType<MapInfo>();
@@ -108,8 +127,10 @@ public class GameManager : MonoBehaviour
 
     IEnumerator DelayLevel(int level)
     {
-        player.transform.position = new Vector3(0, 10, 0);
-        player.GetComponentInChildren<BearAnimator>().SetIdle();
+        player.GetComponent<BearMovement>().controller.Move(new Vector3(0, 10, 0));
+        //player.transform.position = new Vector3(0, 10, 0);
+        player.GetComponent<BearMovement>().StopPlayer();
+        player.GetComponent<BearController>().Spawn();
         UIManager.Instance.heartController.FullHeart();
         UIManager.Instance.SetLevelText(level);
 
@@ -117,7 +138,10 @@ public class GameManager : MonoBehaviour
         timer = 102;
         curLevel++;
 
-        yield return null;
+        curLevel = Mathf.Clamp(curLevel, 0, 5);
+
+        yield return new WaitForSeconds(2);
+        player.GetComponent<BearMovement>().ResetPlayer();
     }
 
     public void SpawnBee()

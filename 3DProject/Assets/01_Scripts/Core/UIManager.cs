@@ -18,6 +18,7 @@ public class UIManager : MonoBehaviour
     public GameObject menuPanel;
     private bool isMenuOpen = false;
     public GameObject rePanel;
+    public GameObject successPanel;
 
     private void Awake()
     {
@@ -89,6 +90,7 @@ public class UIManager : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+        Debug.Log("빠잉");
     }
 
     public void RestartGame()
@@ -96,5 +98,14 @@ public class UIManager : MonoBehaviour
         GameManager.Instance.LoadStage(--GameManager.Instance.CurLevel);
         Time.timeScale = 1;
         rePanel.SetActive(false);
+    }
+
+    public void NextGame()
+    {
+        GameManager.Instance.LoadStage(GameManager.Instance.CurLevel);
+        sceneLoad.LoadingOff();
+        print("오프");
+        successPanel.SetActive(false);
+        print("꺼져");
     }
 }

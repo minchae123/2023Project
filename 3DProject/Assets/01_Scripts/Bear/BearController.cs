@@ -7,14 +7,33 @@ public class BearController : MonoBehaviour
     private BearAnimator animator;
     public BearAnimator Animator => animator;
 
+    private BearMovement movement;
+    public BearMovement Movement => movement;
+
     private void Awake()
     {
         animator = transform.Find("Model").GetComponent<BearAnimator>();
+        movement = GetComponent<BearMovement>();
+    }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.F))
+        {
+            Spawn();
+        }
     }
 
     public void Die()
     {
+        movement.StopPlayer();
         animator.SetDie();
+    }
+
+    public void Spawn()
+    {
+        animator.SetDieStop();
+        animator.SetClapStop();
     }
 
 }

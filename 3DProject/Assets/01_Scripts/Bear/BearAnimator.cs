@@ -28,11 +28,21 @@ public class BearAnimator : MonoBehaviour
 
     public void SetClap()
     {
-        animator.SetTrigger(clapTrigger);
+        animator.SetBool(clapTrigger, true);
     }
 
     public void SetDie()
     {
-        animator.SetTrigger(dieTrigger);
+        animator.SetBool(dieTrigger, true);
+    }
+
+    public void SetClapStop()
+    {
+        animator.SetBool(clapTrigger, false);
+    }
+
+    public void SetDieStop()
+    {
+        animator.SetBool(dieTrigger, false);
     }
 }

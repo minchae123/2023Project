@@ -10,7 +10,9 @@ public class spring : MonoBehaviour
     {
         if (other.GetComponent<Collider>().tag == "Player") 
         {
-            GetComponent<Animator>().Play("spring");           
+            GetComponent<Animator>().Play("spring");
+            Vector3 dir = other.transform.position;
+            other.gameObject.GetComponent<BearMovement>().controller.Move(new Vector3(dir.x, 2, dir.z));
             //other.gameObject.GetComponent<Rigidbody>().AddForce(0f, force, 0f, ForceMode.Impulse);
         }
     }

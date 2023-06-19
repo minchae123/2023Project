@@ -16,7 +16,6 @@ public class SceneLoad : MonoBehaviour
         rectImage = GetComponent<Image>();
         screenSize = new Vector2(Screen.width / 2.5f, Screen.height / 2.5f);
         rectTrm.sizeDelta = screenSize;
-        //rectTrm.anchoredPosition = new Vector2(0, 0);
     }
 
     public void LoadingOff()
@@ -29,7 +28,7 @@ public class SceneLoad : MonoBehaviour
     public void LoadingOn()
     {
         Sequence seq = DOTween.Sequence();
-        seq.Append(rectTrm.DOAnchorPosY(0, 0.5f).SetEase(Ease.InCubic));
+        seq.Append(rectTrm.DOAnchorPosY(0, 0f).SetEase(Ease.InCubic));
         seq.Join(rectImage.DOFade(1, 0.5f));
     }
 }

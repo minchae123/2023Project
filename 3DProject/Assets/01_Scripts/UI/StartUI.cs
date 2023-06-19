@@ -13,6 +13,7 @@ public class StartUI : MonoBehaviour
 
     public void QuitGame()
     {
+        Debug.Log("ºüÀ×");
         Application.Quit();
     }
 }
