@@ -106,6 +106,6 @@ public class UIManager : MonoBehaviour
         sceneLoad.LoadingOff();
         print("오프");
         successPanel.SetActive(false);
-        print("꺼져");
+        print("꺼졍");
     }
 }

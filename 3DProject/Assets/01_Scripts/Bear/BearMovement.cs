@@ -24,7 +24,7 @@ public class BearMovement : MonoBehaviour
 
         realSpeed = speed;
 
-        dir = new Vector3(0,10,0);
+        dir = new Vector3(0, 5, 0);
     }
 
     private void Update()
@@ -74,14 +74,17 @@ public class BearMovement : MonoBehaviour
 
     public void Jump()
     {
-        controller.Move(new Vector3(0, jumpScale, 0) * Time.deltaTime);
+        if (controller.isGrounded)
+        {
+            controller.Move(new Vector3(0, jumpScale, 0));
+        }
     }
 
     public void ResetPlayer()
     {
         gravity = 9.8f;
         speed = realSpeed;
-        dir = new Vector3(0, 10, 0);
+        dir = new Vector3(0, 5, 0);
     }
 
     public void StopPlayer()

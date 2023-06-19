@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2309295136134003710}
   m_Layer: 9
   m_Name: Beee
-  m_TagString: Untagged
+  m_TagString: Bee
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -84,6 +84,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCanAttack: 1
+  isCanHit: 1
 --- !u!135 &2309295136134003710
 SphereCollider:
   m_ObjectHideFlags: 0

@@ -20,15 +20,17 @@ public class SceneLoad : MonoBehaviour
 
     public void LoadingOff()
     {
-        Sequence seq = DOTween.Sequence();
-        seq.Append(rectTrm.DOAnchorPosY(screenSize.y, 0.5f).SetEase(Ease.OutCubic));
-        seq.Join(rectImage.DOFade(0, 0.5f));
+        rectImage.DOFade(0, 0.5f);
+        /*Sequence seq = DOTween.Sequence();
+        seq.Append(rectTrm.DOAnchorPosY(2000, 0.5f).SetEase(Ease.OutCubic));
+        seq.Join(rectImage.DOFade(0, 0.5f));*/
     }
 
     public void LoadingOn()
     {
-        Sequence seq = DOTween.Sequence();
+        rectImage.DOFade(1, 0.5f);
+        /*Sequence seq = DOTween.Sequence();
         seq.Append(rectTrm.DOAnchorPosY(0, 0f).SetEase(Ease.InCubic));
-        seq.Join(rectImage.DOFade(1, 0.5f));
+        seq.Join(rectImage.DOFade(1, 0.5f));*/
     }
 }

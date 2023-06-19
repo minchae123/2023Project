@@ -35,5 +35,4 @@ public class BearController : MonoBehaviour
         animator.SetDieStop();
         animator.SetClapStop();
     }
-
 }

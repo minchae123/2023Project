@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     public int Heart { get => heart; set => heart = value;}
 
     [SerializeField] private CinemachineVirtualCamera clearCam;
+    private AudioSource audioSource;
 
     private void Awake()
     {
@@ -29,6 +30,8 @@ public class GameManager : MonoBehaviour
             Debug.LogError("GameManager 오류");
         }
         Instance = this;
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Start()
@@ -88,12 +91,13 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(3);
         UIManager.Instance.OnPanel(UIManager.Instance.successPanel);
-        UIManager.Instance.sceneLoad.LoadingOn();
+        //UIManager.Instance.sceneLoad.LoadingOn();
     }
 
     public void FailLevel()
     {
-        UIManager.Instance.sceneLoad.LoadingOn();
+        //UIManager.Instance.sceneLoad.LoadingOn();
+        DestroyBee();
 
         UIManager.Instance.rePanel.SetActive(true);
         player.GetComponent<BearController>().Die();
@@ -104,15 +108,15 @@ public class GameManager : MonoBehaviour
     {
         if(level > 0 && level < 6)
         {
-            UIManager.Instance.sceneLoad.LoadingOff();
+            //UIManager.Instance.sceneLoad.LoadingOff();
             MapInfo m = FindObjectOfType<MapInfo>();
             if (m != null)
             {
                 Destroy(m.gameObject);
             }
             
-            clearCam.Priority = 5;
             LevelManager.Instance.MapLoad(level);
+            clearCam.Priority = 5;
 
             m = FindObjectOfType<MapInfo>();
             if (m != null)
@@ -121,13 +125,13 @@ public class GameManager : MonoBehaviour
                 UIManager.Instance.RemainHoney(remainHoney);
             }
 
+            player.GetComponent<BearMovement>().controller.Move(new Vector3(0, 5, 0));
             StartCoroutine(DelayLevel(level));
         }
     }
 
     IEnumerator DelayLevel(int level)
     {
-        player.GetComponent<BearMovement>().controller.Move(new Vector3(0, 10, 0));
         //player.transform.position = new Vector3(0, 10, 0);
         player.GetComponent<BearMovement>().StopPlayer();
         player.GetComponent<BearController>().Spawn();
