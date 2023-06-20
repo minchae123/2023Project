@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour
     private int heart = 3;
     public int Heart { get => heart; set => heart = value;}
 
+    private bool delay = true;
+
     [SerializeField] private CinemachineVirtualCamera clearCam;
     private AudioSource audioSource;
 
@@ -79,13 +81,17 @@ public class GameManager : MonoBehaviour
 
     public void SuccessLevel()
     {
-        DestroyBee();
-        clearCam.Priority = 15;
-        timer += Time.deltaTime;
-        player.GetComponentInChildren<BearAnimator>().SetClap();
-        player.GetComponent<BearMovement>().StopPlayer();
+        if (delay)
+        {
+            delay = false;
+            DestroyBee();
+            clearCam.Priority = 15;
+            timer += Time.deltaTime;
+            player.GetComponentInChildren<BearAnimator>().SetClap();
+            player.GetComponent<BearMovement>().StopPlayer();
 
-        StartCoroutine(SucessDelay());
+            StartCoroutine(SucessDelay());
+        }
     }
 
     IEnumerator SucessDelay()
@@ -110,6 +116,8 @@ public class GameManager : MonoBehaviour
         if(level > 0 && level < 6)
         {
             //UIManager.Instance.sceneLoad.LoadingOff();
+            clearCam.Priority = 5;
+
             MapInfo m = FindObjectOfType<MapInfo>();
             if (m != null)
             {
@@ -117,7 +125,6 @@ public class GameManager : MonoBehaviour
             }
             
             LevelManager.Instance.MapLoad(level);
-            clearCam.Priority = 5;
 
             m = FindObjectOfType<MapInfo>();
             if (m != null)
@@ -126,7 +133,7 @@ public class GameManager : MonoBehaviour
                 UIManager.Instance.RemainHoney(remainHoney);
             }
 
-            player.GetComponent<BearMovement>().controller.Move(new Vector3(0, 5, 0));
+            player.GetComponent<BearMovement>().controller.Move(Vector3.zero + Vector3.up * 5);
             StartCoroutine(DelayLevel(level));
         }
         else if(level > 6)
@@ -142,6 +149,7 @@ public class GameManager : MonoBehaviour
         player.GetComponent<BearController>().Spawn();
         UIManager.Instance.heartController.FullHeart();
         UIManager.Instance.SetLevelText(level);
+        delay = true;
 
         heart = 3;
         timer = 102;
