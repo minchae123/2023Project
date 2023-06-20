@@ -21,7 +21,6 @@ public class LevelManager : MonoBehaviour
     {
         if(level > 0 && level < 6){
             Instantiate(levelSO.map[level - 1], transform.position, Quaternion.identity);
-            //Debug.Log(level);
         }
     }
 }

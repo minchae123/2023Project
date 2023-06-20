@@ -7,11 +7,14 @@ public class Bee : MonoBehaviour
     [SerializeField] private bool isCanAttack = true;
     [SerializeField] private bool isCanHit = true;
 
+    private Animator animator;
+
     private Material mat;
 
     private void Awake()
     {
         mat = GetComponentInChildren<SkinnedMeshRenderer>().material;
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -32,7 +35,6 @@ public class Bee : MonoBehaviour
     {
         if(isCanAttack && IsRange())
         {
-            print("공격");
             isCanAttack = false;
             Material(Color.red);
             StartCoroutine(Delay(5));
@@ -72,5 +74,11 @@ public class Bee : MonoBehaviour
     {
         yield return new WaitForSeconds(t);
         isCanHit = true;    
+    }
+
+    public void DieAnimation()
+    {
+        StopAllCoroutines();
+        animator.SetBool("die", true);
     }
 }

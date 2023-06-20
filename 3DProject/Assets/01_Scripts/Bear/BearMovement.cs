@@ -56,7 +56,7 @@ public class BearMovement : MonoBehaviour
 
     public void Move(Vector3 v)
     {
-        controller.Move(v.y * Vector3.up + (v.z * transform.forward * speed));
+        controller.Move(v.y * Vector3.up + (v.z * transform.forward * speed * Time.deltaTime));
     }
 
     public Vector3 ApplyGravity(Vector3 v)

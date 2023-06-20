@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Cinemachine;
 
 public class GameManager : MonoBehaviour
@@ -128,6 +129,10 @@ public class GameManager : MonoBehaviour
             player.GetComponent<BearMovement>().controller.Move(new Vector3(0, 5, 0));
             StartCoroutine(DelayLevel(level));
         }
+        else if(level > 6)
+        {
+            SceneManager.LoadScene(2);
+        }
     }
 
     IEnumerator DelayLevel(int level)
@@ -142,7 +147,7 @@ public class GameManager : MonoBehaviour
         timer = 102;
         curLevel++;
 
-        curLevel = Mathf.Clamp(curLevel, 0, 5);
+        curLevel = Mathf.Clamp(curLevel, 0, 6);
 
         yield return new WaitForSeconds(2);
         player.GetComponent<BearMovement>().ResetPlayer();
@@ -159,6 +164,7 @@ public class GameManager : MonoBehaviour
         Bee[] bee = GetComponentsInChildren<Bee>();
         for(int i = 0; i < bee.Length; i++)
         {
+
             Destroy(bee[i].gameObject);
         }
     }

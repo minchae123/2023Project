@@ -19,6 +19,9 @@ public class HeartController : MonoBehaviour
 
     public void ReduceHeart(int index)
     {
-        hearts[index].gameObject.SetActive(false);
+        if (index < hearts.Length)
+            hearts[index].gameObject.SetActive(false);
+        else
+            print("аж╠щ");
     }
 }

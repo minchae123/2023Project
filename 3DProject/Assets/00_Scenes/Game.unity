@@ -3164,7 +3164,7 @@ GameObject:
   - component: {fileID: 1388519375}
   - component: {fileID: 1388519374}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: SPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3488,7 +3488,7 @@ GameObject:
   - component: {fileID: 1468484427}
   - component: {fileID: 1468484426}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: EPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5721,7 +5721,7 @@ GameObject:
   - component: {fileID: 1928926358}
   - component: {fileID: 1928926357}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: FPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6745,6 +6745,10 @@ PrefabInstance:
     - target: {fileID: 2143877550755354724, guid: 6e8e24b95285c8445b2c6476ed9b87e6, type: 3}
       propertyPath: m_LocalPosition.z
       value: 1.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 2143877551449420373, guid: 6e8e24b95285c8445b2c6476ed9b87e6, type: 3}
+      propertyPath: speed
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2143877551449420373, guid: 6e8e24b95285c8445b2c6476ed9b87e6, type: 3}
       propertyPath: camTrm

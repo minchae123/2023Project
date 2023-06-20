@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8453484953434587358}
   - component: {fileID: 5959450394714502164}
   - component: {fileID: 5005096977917438099}
-  - component: {fileID: 5005096977917438098}
+  - component: {fileID: 7596750645745916503}
   m_Layer: 0
   m_Name: Spikes
   m_TagString: Obstacle
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 5311086460326860225}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
   m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_LocalScale: {x: 100, y: 100, z: 191.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -98,17 +98,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42d16d2a8141e394fb14cb65806d57a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!64 &5005096977917438098
-MeshCollider:
+--- !u!65 &7596750645745916503
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5311086460326860225}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -1208135504851591274, guid: 75dd352c90493ab499aa0e064b32f363, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.017024172, y: 0.017024169, z: 0.012713106}
+  m_Center: {x: 0, y: -8.9663784e-17, z: 0.006309527}

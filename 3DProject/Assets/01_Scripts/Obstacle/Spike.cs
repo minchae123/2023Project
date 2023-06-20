@@ -13,7 +13,7 @@ public class Spike : MonoBehaviour
 
         if (other.CompareTag("Bee"))
         {
-
+            other.GetComponent<Bee>().DieAnimation();
         }
     }
 }

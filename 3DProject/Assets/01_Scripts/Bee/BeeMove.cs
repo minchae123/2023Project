@@ -21,10 +21,6 @@ public class BeeMove : MonoBehaviour
         StartCoroutine(MoveDelay());
     }
 
-    private void Update()
-    {
-    }
-
     private IEnumerator Flying()
     {
         float fly = 0;
@@ -48,5 +44,10 @@ public class BeeMove : MonoBehaviour
             Move();
             yield return new WaitForSeconds(0.5f);
         }
+    }
+
+    public void Die()
+    {
+        Destroy(gameObject);
     }
 }

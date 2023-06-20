@@ -95,17 +95,16 @@ public class UIManager : MonoBehaviour
 
     public void RestartGame()
     {
-        GameManager.Instance.LoadStage(--GameManager.Instance.CurLevel);
+        GameManager.Instance.LoadStage(GameManager.Instance.CurLevel - 1);
         Time.timeScale = 1;
         rePanel.SetActive(false);
     }
 
     public void NextGame()
     {
+        successPanel.SetActive(false);
         GameManager.Instance.LoadStage(GameManager.Instance.CurLevel);
         sceneLoad.LoadingOff();
-        print("오프");
-        successPanel.SetActive(false);
         print("꺼졍");
     }
 }
