@@ -133,18 +133,20 @@ public class GameManager : MonoBehaviour
                 UIManager.Instance.RemainHoney(remainHoney);
             }
 
-            player.GetComponent<BearMovement>().controller.Move(Vector3.zero + Vector3.up * 5);
             StartCoroutine(DelayLevel(level));
         }
         else if(level > 6)
         {
+            print("끗");
             SceneManager.LoadScene(2);
         }
     }
 
     IEnumerator DelayLevel(int level)
     {
-        //player.transform.position = new Vector3(0, 10, 0);
+        player.transform.position = new Vector3(0, 10, 0);
+        player.GetComponent<BearMovement>().controller.Move(Vector3.zero + Vector3.up * 5);
+
         player.GetComponent<BearMovement>().StopPlayer();
         player.GetComponent<BearController>().Spawn();
         UIManager.Instance.heartController.FullHeart();
@@ -154,6 +156,7 @@ public class GameManager : MonoBehaviour
         heart = 3;
         timer = 102;
         curLevel++;
+        print(curLevel);
 
         curLevel = Mathf.Clamp(curLevel, 0, 6);
 
@@ -163,8 +166,11 @@ public class GameManager : MonoBehaviour
 
     public void SpawnBee()
     {
-        GameObject b = Instantiate(Bee, transform.position, Quaternion.identity);
-        b.transform.parent = gameObject.transform;
+        for (int i = 0; i < curLevel; i++) 
+        {
+            GameObject b = Instantiate(Bee, transform.position, Quaternion.identity);
+            b.transform.parent = gameObject.transform;
+        }
     }
 
     public void DestroyBee()

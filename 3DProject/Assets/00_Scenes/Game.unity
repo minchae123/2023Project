@@ -200,8 +200,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 22769866}
-  m_LocalRotation: {x: 0.14798658, y: 0.0000000012030272, z: -1.8001393e-10, w: 0.9889894}
-  m_LocalPosition: {x: 0, y: 12.389999, z: -2}
+  m_LocalRotation: {x: 0.2644818, y: 0.0000000019821411, z: -5.4359744e-10, w: 0.9643907}
+  m_LocalPosition: {x: 0, y: 12.91, z: -1.9999999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1016,8 +1016,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 204114837}
-  m_LocalRotation: {x: 0.14798658, y: 0.0000000012030272, z: -1.8001393e-10, w: 0.9889894}
-  m_LocalPosition: {x: 0, y: 12.389999, z: -2}
+  m_LocalRotation: {x: 0.2644818, y: 0.0000000019821411, z: -5.4359744e-10, w: 0.9643907}
+  m_LocalPosition: {x: 0, y: 12.91, z: -1.9999999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2984,8 +2984,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damping: {x: 0.1, y: 0.5, z: 0.3}
-  ShoulderOffset: {x: 0, y: 1.99, z: 0}
-  VerticalArmLength: 0.4
+  ShoulderOffset: {x: 0, y: 2.38, z: 0}
+  VerticalArmLength: 0.53
   CameraSide: 1
   CameraDistance: 2
   CameraCollisionFilter:
@@ -3042,7 +3042,7 @@ Transform:
   m_Children:
   - {fileID: 1705735187}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1269527496
 AudioSource:
@@ -6720,7 +6720,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2143877550755354724, guid: 6e8e24b95285c8445b2c6476ed9b87e6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.92
+      value: 0.9
       objectReference: {fileID: 0}
     - target: {fileID: 2143877551449420373, guid: 6e8e24b95285c8445b2c6476ed9b87e6, type: 3}
       propertyPath: speed
@@ -6736,7 +6736,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2143877551449420378, guid: 6e8e24b95285c8445b2c6476ed9b87e6, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2143877551449420378, guid: 6e8e24b95285c8445b2c6476ed9b87e6, type: 3}
       propertyPath: m_LocalPosition.x
