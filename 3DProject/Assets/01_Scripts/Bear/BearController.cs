@@ -10,10 +10,15 @@ public class BearController : MonoBehaviour
     private BearMovement movement;
     public BearMovement Movement => movement;
 
+    private AudioSource audioSource;
+    public AudioSource AudioSource => audioSource;
+    public AudioClip hitClip;
+
     private void Awake()
     {
         animator = transform.Find("Model").GetComponent<BearAnimator>();
         movement = GetComponent<BearMovement>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()

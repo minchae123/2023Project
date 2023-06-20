@@ -135,7 +135,7 @@ public class GameManager : MonoBehaviour
 
             StartCoroutine(DelayLevel(level));
         }
-        else if(level > 6)
+        else
         {
             print("끗");
             SceneManager.LoadScene(2);

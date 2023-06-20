@@ -53,6 +53,7 @@ public class Bee : MonoBehaviour
             if (GameManager.Instance.Heart > 0 && isCanHit)
             {
                 isCanHit = false;
+                other.GetComponent<BearController>().AudioSource.Play();
                 UIManager.Instance.heartController.ReduceHeart(--GameManager.Instance.Heart);
                 StartCoroutine(Delay2(2));
             }
