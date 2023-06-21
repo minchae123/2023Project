@@ -11,11 +11,14 @@ public class HoenyComb : MonoBehaviour
     public float power;
     public float upScale;
 
+    private AudioSource audioSource;
+
     private BoxCollider col;
 
     private void Awake() 
     {
         col = GetComponent<BoxCollider>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -39,6 +42,7 @@ public class HoenyComb : MonoBehaviour
     public void Destroy()
     {
         GameManager.Instance.RemainHoney--;
+        audioSource.Play();
         UIManager.Instance.RemainHoney(GameManager.Instance.RemainHoney);
         col.enabled = false;
         Destroy(gameObject);

@@ -14,6 +14,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI curLevelTxt;
     [SerializeField] private TextMeshProUGUI honeyCntTxt;
     [SerializeField] private TextMeshProUGUI curTimeTxt;
+    [SerializeField] private TextMeshProUGUI countTxt;
 
     public GameObject menuPanel;
     private bool isMenuOpen = false;
@@ -106,5 +107,22 @@ public class UIManager : MonoBehaviour
         GameManager.Instance.LoadStage(GameManager.Instance.CurLevel);
         sceneLoad.LoadingOff();
         print("꺼졍");
+    }
+
+    public void CountUI()
+    {
+        StartCoroutine(TimeDelay());
+    }
+
+    IEnumerator TimeDelay()
+    {
+        countTxt.gameObject.SetActive(true);
+        for (int i = 3; i > 0; i--)
+        {
+            countTxt.SetText(i.ToString());
+            yield return new WaitForSeconds(1);
+
+        }
+        countTxt.gameObject.SetActive(false);
     }
 }

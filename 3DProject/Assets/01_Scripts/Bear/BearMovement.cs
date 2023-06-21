@@ -50,8 +50,8 @@ public class BearMovement : MonoBehaviour
 
     public void Rotate(Vector3 dir)
     {
-        transform.Rotate(dir.normalized * rotateSpeed);
-        camTrm.Rotate(dir.normalized * rotateSpeed);
+        transform.Rotate(dir.normalized * rotateSpeed * Time.deltaTime);
+        camTrm.Rotate(dir.normalized * rotateSpeed * Time.deltaTime);
     }
 
     public void Move(Vector3 v)

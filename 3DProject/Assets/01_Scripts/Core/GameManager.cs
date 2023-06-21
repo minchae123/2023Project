@@ -151,10 +151,10 @@ public class GameManager : MonoBehaviour
         player.GetComponent<BearController>().Spawn();
         UIManager.Instance.heartController.FullHeart();
         UIManager.Instance.SetLevelText(level);
+        UIManager.Instance.CountUI();
         delay = true;
-
         heart = 3;
-        timer = 102;
+        timer = 102 - (curLevel - 1) * 10;
         curLevel++;
         print(curLevel);
 
